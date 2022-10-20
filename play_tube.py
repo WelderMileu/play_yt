@@ -59,7 +59,8 @@ class Simple:
             while (1):
                 ret, frame = cap.read()
                 cv2.imshow(str(ts), frame)
-                cv2.moveWindow(str(ts), 40,70)
+                cv2.moveWindow(str(ts), 0,0)
+                cv2.namedWindow(str(ts), cv2.WINDOW_NORMAL)
 
                 if cv2.waitKey(1) & 0xFF == ord('q') or ret==False:
                     cap.release()
