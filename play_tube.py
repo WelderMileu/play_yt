@@ -4,6 +4,7 @@ try:
     import sys
     from pytube import YouTube
     import os
+    import unidecode
 
 except Exception as err:
     print(err)
@@ -53,7 +54,7 @@ class Simple:
             cap = cv2.VideoCapture(self.video_tmp)
             ret, frame = cap.read()
 
-            ts = self.video_t.encode('utf-8') 
+            ts = unidecode.unidecode(self.video_t)
 
             while (1):
                 ret, frame = cap.read()
