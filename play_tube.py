@@ -11,10 +11,10 @@ except Exception as err:
 class Simple:
     def __init__(self, domain):
         try:
-            self.domain    = str(domain)
-            self.video_t   = ''
-            self.video_tmp = 'video.mp4'
-            self.video_ext = ''
+            self.domain     = str(domain)
+            self.video_t    = ''
+            self.video_tmp  = 'video.mp4'
+            self.video_path = ''
 
         except Exception as err:
             print(err)
@@ -24,14 +24,14 @@ class Simple:
             yt = YouTube(self.domain)
             download = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
             
-            self.video_t = yt.title
-            self.video_ext = download
+            self.video_t    = yt.title
+            self.video_path = download
 
             os.rename(download, self.video_tmp)
 
         def reset():
-            if os.path.exists(self.video_ext):
-                os.remove(self.video_ext)
+            if os.path.exists(self.video_path):
+                os.remove(self.video_path)
 
             if os.path.exists(self.video_tmp):
                 os.remove(self.video_tmp)
