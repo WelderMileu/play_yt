@@ -60,7 +60,8 @@ class Simple:
                 ret, frame = cap.read()
                 cv2.imshow(str(ts), frame)
                 cv2.moveWindow(str(ts), 0,0)
-                cv2.namedWindow(str(ts), cv2.WINDOW_NORMAL)
+                cv2.namedWindow(str(ts))
+                cv2.setWindowProperty(str(ts), cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
                 if cv2.waitKey(1) & 0xFF == ord('q') or ret==False:
                     cap.release()
