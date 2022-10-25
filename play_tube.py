@@ -3,9 +3,11 @@
 try:
     import cv2
     import sys
+    from pytube.cli import on_progress
     from pytube import YouTube
     import os
     import unidecode
+    from time import sleep
 
 except Exception as err:
     print(err)
@@ -23,9 +25,10 @@ class Simple:
 
     def download_video(self):
         def execute():
-            yt = YouTube(self.domain)
+            print("\nDownload video progress ...")
+            yt = YouTube(self.domain, on_progress_callback=on_progress)
             download = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
-            
+
             self.video_t    = yt.title
             self.video_path = download
 
@@ -52,6 +55,8 @@ class Simple:
 
     def play_video(self):
         try:
+            print("\n\nStarting video ...")
+            sleep(.5)
             cap = cv2.VideoCapture(self.video_tmp)
             ret, frame = cap.read()
 
