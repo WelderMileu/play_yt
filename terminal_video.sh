@@ -23,7 +23,7 @@ while [ $loop ]; do
 		echo "";
 
 	elif [ $param = 's' ]; then
-		read -p '| PARAM SEARCH | -| ' search
+		read -p '[search] - ' search
 		python tools.py s "$search"
 
 	elif [ $param = 'v' ]; then
@@ -36,7 +36,7 @@ while [ $loop ]; do
 		python tools.py clc
 
 	elif [ $param = 'p' ]; then
-		read -p '| DOMAIN VIDEO | -| ' video
+		read -p '[domain] - ' video
 		python play.py "$video"
 	
 	elif [ $param = 'cls' ]; then
