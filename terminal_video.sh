@@ -4,7 +4,7 @@ loop=True
 
 while [ $loop ]; do
 	echo -e "\e[0;36m┌──(\e[0mprompt-video\e[0;36m)\e[0m - [$(date +'%H:%M:%S')]"
-	echo -en "\e[0;36m--- $ \e[0m"
+	echo -en "\e[0;36m└─ $ \e[0m"
 	read -p '' param
 
 	if [ -z $param  ]; then
@@ -23,7 +23,7 @@ while [ $loop ]; do
 		echo "";
 
 	elif [ $param = 's' ]; then
-		read -p '[param search] => ' search
+		read -p '| PARAM SEARCH | -| ' search
 		python tools.py s "$search"
 
 	elif [ $param = 'v' ]; then
@@ -36,7 +36,7 @@ while [ $loop ]; do
 		python tools.py clc
 
 	elif [ $param = 'p' ]; then
-		read -p '[domain video] => ' video
+		read -p '| DOMAIN VIDEO | -| ' video
 		python play.py "$video"
 	
 	elif [ $param = 'cls' ]; then
