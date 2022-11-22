@@ -3,7 +3,8 @@
 loop=True
 
 while [ $loop ]; do
-	echo -en "\e[0;36m ▶️ \e[0m\e[0;36m[\e[0mprompt-video\e[0;36m]$\e[0m "
+	echo -e "\e[0;36m┌──(\e[0mprompt-video\e[0;36m)\e[0m - [$(date +'%H:%M:%S')]"
+	echo -en "\e[0;36m--- $ \e[0m"
 	read -p '' param
 
 	if [ -z $param  ]; then
