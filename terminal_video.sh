@@ -3,15 +3,14 @@
 loop=True
 
 while [ $loop ]; do
-	echo -e "\e[0;36m┌──(\e[0mprompt-video\e[0;36m)\e[0m - [$(date +'%H:%M:%S')]"
-	echo -en "\e[0;36m└─ $ \e[0m"
+	echo -e "\e[0;36m┌──(\e[0mprompt-video\e[0;36m)\e[0m - [⏱ - $(date +'%H:%M:%S')]"
+	echo -en "\e[0;36m└─💲 \e[0m"
 	read -p '' param
 
 	if [ -z $param  ]; then
 		echo -n "";
 
 	elif [ $param = "-h" ]; then
-	    echo "";
 		echo "[-h]  - menu help"
 	    echo "[s]   - consult search";
 		echo "[v]   - tabs of the videos";
@@ -20,10 +19,9 @@ while [ $loop ]; do
 		echo "[clc] - clear cache in browser"
 		echo "[cls] - clear terminal"
 		echo "[q]   - quit";
-		echo "";
 
 	elif [ $param = 's' ]; then
-		read -p '[search] - ' search
+		read -p '| 🔎 search | - ' search
 		python tools.py s "$search"
 
 	elif [ $param = 'v' ]; then
@@ -36,7 +34,7 @@ while [ $loop ]; do
 		python tools.py clc
 
 	elif [ $param = 'p' ]; then
-		read -p '[domain] - ' video
+		read -p '| 🎥 domain video | - ' video
 		python play.py "$video"
 	
 	elif [ $param = 'cls' ]; then
